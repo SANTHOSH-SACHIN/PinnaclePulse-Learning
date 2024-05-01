@@ -10,6 +10,66 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
+<script type="module">
+
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getFirestore , doc , setDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+    import { getAuth,createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXH2bRnzJXrMUrNGyUWWj-1perDYJcP9s",
+      authDomain: "pinnacle-pulse-7c530.firebaseapp.com",
+      projectId: "pinnacle-pulse-7c530",
+      storageBucket: "pinnacle-pulse-7c530.appspot.com",
+      messagingSenderId: "748383723865",
+      appId: "1:748383723865:web:4051b001fb393a5111ac48"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const auth = getAuth(app);
+
+    let FacNameInp = document.getElementById("fac-name");
+    let FacUsernameInp = document.getElementById("fac-usr");
+    let FacEmailInp = document.getElementById("fac-email");
+    let FacPassInp = document.getElementById("fac-pwd");
+    let FacSubInp = document.getElementById("fac-subject");
+    let FacContactInp = document.getElementById("fac-contact");
+    let FacDOBInp = document.getElementById("fac-dob");
+    let MainForm = document.getElementById("Main-fac-form");
+
+
+    let RegisterUser = evt => {
+        evt.preventDefault();
+        createUserWithEmailAndPassword(auth,FacEmailInp.value,FacPassInp.value)
+        .then(async (credentials)=> {
+            var ref = doc(db,"UserAuthList",credentials.user.uid);
+            await setDoc(ref , {
+                name     :FacNameInp.value,
+                username :FacUsernameInp.value,
+                email    :FacEmailInp.value,
+                subject  :FacSubInp.value,
+                contact  :FacContactInp.value,
+                dob      :FacDOBInp.value,
+                usertype :"F"
+
+            })
+
+            window.location.href = "./faculty-login.html";
+        })
+        .catch((error)=>{
+            alert(error.message);
+            console.log(error.code)
+            console.log(error.message)
+        })
+    }
+
+    MainForm.addEventListener('submit',RegisterUser);
+  </script>
+
 <body>
     <div class="login-form">
         <h1>Register New Faculty</h1>
@@ -17,13 +77,15 @@
             <div class="main">
                 <div class="content">
                     <h2>Register</h2>
-                    <form action="" method="post">
-                        <input type="text" name="name" placeholder="Full Name" required autofocus="">
-                        <input type="text" name="username" placeholder="Username" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="password" name="password" placeholder="Password" required>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-                        <input type="text" name="course_subject" placeholder="Course Subject" required>
+                    <form id = "Main-fac-form" action="" method="post">
+                        <input type="text" id ="fac-name" name="name" placeholder="Full Name" required autofocus="">
+                        <input type="text" id ="fac-usr"  name="username" placeholder="Username" required>
+                        <input type="email" id ="fac-email"name="email"  placeholder="Email" required>
+                        <input type="password" id ="fac-pwd"name="password" placeholder="Password" required>
+                        <input type="password" id = "fac-cpwd"name="confirm_password" placeholder="Confirm Password" required>
+                        <input type="text" id ="fac-subject"name="course_subject" placeholder="Course Subject" required>
+                        <input type="date" id = "fac-dob" name="dob" placeholder="Date of Birth">
+                        <input type="tel" id = "fac-contact" name="contactNumber" placeholder="Contact Number">
                         <button class="btn" type="submit">
                             Register
                         </button>

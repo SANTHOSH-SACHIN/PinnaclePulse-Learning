@@ -1,120 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../css/style_admin.css" />
-    <link rel="stylesheet" href="../css/styles.css" />
-  </head>
-  <body>
-    <nav>
-      <div class="nav__logo">
-        <a href="../files/index.html">PinnaclePulse</a>
-      </div>
-      <ul class="nav__links">
-        <li class="links"><a href="#">Home</a></li>
-        <li class="links"><a href="#">About Us</a></li>
-        <li class="links"><a href="#">Courses</a></li>
-        <li class="links"><a href="#">Teach at PinnaclePulse</a></li>
-        <li class="links"><a href="#" class="nav__btn">Register</a></li>
-        <div class="dropdown">
-          <button class="dropdown-btn">Login</button>
-          <ul class="dropdown-content">
-            <li class="links"><a href="../files/student-login.html" class="login__btn">Student</a></li>
-            <li class="links"><a href="../files/faculty-login.html" class="login__btn">Faculty</a></li>
-            <li class="links"><a href="#" class="login__btn">Admin</a></li>
-          </ul>
-        </div>
-      </ul>
-    </nav>
-    
 
-    <div class="admin_container">
-      <h2>Admin Course Dashboard</h2>
-      <div class="admin_dashboard"></div>
-      <div class="buttons">
-        <button id="create-course">Create Course</button>
-        <button id="assign-faculty">Assign Faculty</button>
-        <!-- Add more buttons for other functionalities -->
-      </div>
-      <div class="create-course hidden">
-        <h3>Create Course</h3>
-        <div class="form-group">
-          <label for="course-name">Course Name:</label>
-          <input type="text" id="course-name" placeholder="Enter course name" />
-        </div>
-        <div class="form-group">
-          <label for="faculty">Select Faculty:</label>
-          <select id="faculty">
-            <option value="">-- Select Faculty --</option>
-            <option value="faculty1">Faculty 1</option>
-            <option value="faculty2">Faculty 2</option>
-            <option value="faculty3">Faculty 3</option>
-            <!-- Add more faculty options as needed -->
-          </select>
-        </div>
-        <div class="form-group">
-          <button id="create-course-btn">Create Course</button>
-        </div>
-      </div>
-      <div class="assign-faculty hidden">
-        <h3>Assign Faculty</h3>
-        <!-- Add assignment faculty form or content here -->
-        <div class="form-group">
-          <label for="faculty-name">Faculty Name:</label>
-          <input type="text" id="faculty-name" placeholder="Enter Faculty name" />
-        </div>
-        <div class="form-group">
-          <label for="course">Select Course:</label>
-          <select id="course">
-            <option value="">-- Select Course --</option>
-            <option value="course1">Faculty 1</option>
-            <option value="course2">Faculty 2</option>
-            <option value="course3">Faculty 3</option>
-            <!-- Add more faculty options as needed -->
-          </select>
-        </div>
-        <div class="form-group">
-          <button id="create-course-btn">Assign Faculty</button>
-        </div>
-      </div>
-      <!-- Add more divs for other functionalities as needed -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/style_admin.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
 
-      <button id="back-to-dashboard" class="hidden">Back to Dashboard</button>
-      <div class="popup" id="success-popup">
-        <p>Course created / Faculty assigned successfully!</p>
+<body>
+  <nav>
+    <div class="nav__logo">
+      <a href="../files/index.html">PinnaclePulse</a>
+    </div>
+    <ul class="nav__links">
+      <li class="links"><a href="#">Home</a></li>
+      <li class="links"><a href="#">About Us</a></li>
+      <li class="links"><a href="#">Courses</a></li>
+      <li class="links"><a href="#">Teach at PinnaclePulse</a></li>
+      <li class="links"><a href="#" class="nav__btn">Register</a></li>
+      <div class="dropdown">
+        <button class="dropdown-btn">Login</button>
+        <ul class="dropdown-content">
+          <li class="links"><a href="../files/student-login.html" class="login__btn">Student</a></li>
+          <li class="links"><a href="../files/faculty-login.html" class="login__btn">Faculty</a></li>
+          <li class="links"><a href="#" class="login__btn">Admin</a></li>
+        </ul>
+      </div>
+    </ul>
+  </nav>
+
+
+  <div class="admin_container">
+    <h2>Admin Course Dashboard</h2>
+    <div class="admin_dashboard"></div>
+    <div class="buttons">
+      <button id="create-course">Create Course</button>
+      <button id="assign-faculty">Assign Faculty</button>
+      <!-- Add more buttons for other functionalities -->
+    </div>
+    <div class="create-course hidden">
+      <h3>Create Course</h3>
+      <div class="form-group">
+        <label for="course-name">Course Name:</label>
+        <input type="text" id="course-name" placeholder="Enter course name" />
+      </div>
+      <div class="form-group">
+        <label for="faculty">Select Faculty:</label>
+        <select id="faculty">
+          <option value="">-- Select Faculty --</option>
+          <option value="faculty1">Faculty 1</option>
+          <option value="faculty2">Faculty 2</option>
+          <option value="faculty3">Faculty 3</option>
+          <!-- Add more faculty options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <button id="create-course-btn">Create Course</button>
       </div>
     </div>
+    <div class="assign-faculty hidden">
+      <h3>Assign Faculty</h3>
+      <!-- Add assignment faculty form or content here -->
+      <div class="form-group">
+        <label for="faculty-name">Faculty Name:</label>
+        <select id="faculty-name">
+          <option value="">-- Select Faculty --</option>
+          <option value="faculty1">Faculty 1</option>
+          <option value="faculty2">Faculty 2</option>
+          <option value="faculty3">Faculty 3</option>
+          <!-- Add more faculty options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="course">Select Course:</label>
+        <select id="course">
+          <option value="">-- Select Course --</option>
+          <option value="course1">Course 1</option>
+          <option value="course2">Course 2</option>
+          <option value="course3">Course 3</option>
+          <!-- Add more faculty options as needed -->
+        </select>
+      </div>
+      <div class="form-group">
+        <button id="create-course-btn">Assign Faculty</button>
+      </div>
+    </div>
+    <!-- Add more divs for other functionalities as needed -->
 
-    <script>
-      const createCourseBtn = document.getElementById("create-course");
-      const assignFacultyBtn = document.getElementById("assign-faculty");
-      const backToDashboardBtn = document.getElementById("back-to-dashboard");
-      const createCourseSection = document.querySelector(".create-course");
-      const assignFacultySection = document.querySelector(".assign-faculty");
+    <button id="back-to-dashboard" class="hidden">Back to Dashboard</button>
+    <div class="popup" id="success-popup">
+      <p>Course created / Faculty assigned successfully!</p>
+    </div>
+  </div>
 
-      createCourseBtn.addEventListener("click", function () {
-        // Hide original buttons, show corresponding section, show back to dashboard button
-        document.querySelector(".buttons").classList.add("hidden");
-        createCourseSection.classList.remove("hidden");
-        backToDashboardBtn.classList.remove("hidden");
+  <script>
+    const createCourseBtn = document.getElementById("create-course");
+    const assignFacultyBtn = document.getElementById("assign-faculty");
+    const backToDashboardBtn = document.getElementById("back-to-dashboard");
+    const createCourseSection = document.querySelector(".create-course");
+    const assignFacultySection = document.querySelector(".assign-faculty");
+    const createCourseSubmit = document.getElementById("create-course-btn");
+
+    createCourseBtn.addEventListener("click", function () {
+      // Hide original buttons, show corresponding section, show back to dashboard button
+      document.querySelector(".buttons").classList.add("hidden");
+      createCourseSection.classList.remove("hidden");
+      backToDashboardBtn.classList.remove("hidden");
+    });
+
+    assignFacultyBtn.addEventListener("click", function () {
+      // Hide original buttons, show corresponding section, show back to dashboard button
+      document.querySelector(".buttons").classList.add("hidden");
+      assignFacultySection.classList.remove("hidden");
+      backToDashboardBtn.classList.remove("hidden");
+    });
+
+    backToDashboardBtn.addEventListener("click", function () {
+      // Show original buttons, hide all sections, hide back to dashboard button
+      document.querySelector(".buttons").classList.remove("hidden");
+      createCourseSection.classList.add("hidden");
+      assignFacultySection.classList.add("hidden");
+      backToDashboardBtn.classList.add("hidden");
+    });
+  </script>
+
+  <script type="module">
+
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXH2bRnzJXrMUrNGyUWWj-1perDYJcP9s",
+      authDomain: "pinnacle-pulse-7c530.firebaseapp.com",
+      projectId: "pinnacle-pulse-7c530",
+      storageBucket: "pinnacle-pulse-7c530.appspot.com",
+      messagingSenderId: "748383723865",
+      appId: "1:748383723865:web:4051b001fb393a5111ac48"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const auth = getAuth(app);
+
+    // Retrive Faculty names as an array from the userAuth
+    import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+    const usersCollectionRef = collection(db, "UserAuthList");
+    const coursesRef = collection(db, "Courses");
+    const facultyNames = [];
+    const courses = [];
+
+    getDocs(usersCollectionRef)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const docData = doc.data();
+          if (docData.usertype === "F") {
+            facultyNames.push(docData.name);
+          }
+        });
+        populateSelectOptions(facultyNames);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
       });
 
-      assignFacultyBtn.addEventListener("click", function () {
-        // Hide original buttons, show corresponding section, show back to dashboard button
-        document.querySelector(".buttons").classList.add("hidden");
-        assignFacultySection.classList.remove("hidden");
-        backToDashboardBtn.classList.remove("hidden");
+      getDocs(coursesRef)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const docData = doc.data();
+            courses.push(docData.Name);
+        });
+        populate(facultyNames, courses)
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
       });
 
-      backToDashboardBtn.addEventListener("click", function () {
-        // Show original buttons, hide all sections, hide back to dashboard button
-        document.querySelector(".buttons").classList.remove("hidden");
-        createCourseSection.classList.add("hidden");
-        assignFacultySection.classList.add("hidden");
-        backToDashboardBtn.classList.add("hidden");
+    function populateSelectOptions(names) {
+      const facultySelect = document.getElementById("faculty");
+      facultySelect.innerHTML = ""; // Clear existing options
+
+      names.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        facultySelect.appendChild(option);
       });
-    </script>
-  </body>
+    }
+
+    function populate(f,c) {
+      const selectedFaculty2 = document.getElementById("faculty-name");
+      const course = document.getElementById("course");
+      selectedFaculty2.innerHTML = ""; // Clear existing options
+      course.innerHTML="";
+
+      f.forEach((f) => {
+        const option = document.createElement("option");
+        option.value = f;
+        option.textContent = f;
+        selectedFaculty2.appendChild(option);
+      });
+      c.forEach((c) => {
+        const option = document.createElement("option");
+        option.value = c;
+        option.textContent = c;
+        course.appendChild(option);
+      });
+    }
+
+
+
+    createCourseSubmit.addEventListener("click", createCourse);
+
+    async function createCourse() {
+      // 
+    
+      const courseName = document.getElementById("course-name").value;
+      const selectedFaculty = document.getElementById("faculty").value;
+
+
+        try {
+          const coursesCollectionRef = collection(db, "Courses");
+          const docRef = await addDoc(coursesCollectionRef, {
+            Name: courseName,
+            Assigned_Fac: [selectedFaculty]
+          });
+          console.log("Course created with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      } 
+    
+
+  </script>
+</body>
+
 </html>
