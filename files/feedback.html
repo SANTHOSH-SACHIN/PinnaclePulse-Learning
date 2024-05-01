@@ -41,7 +41,7 @@
         course1: ["Faculty A", "Faculty B", "Faculty C"], // Sample faculty list for Course 1
         course2: ["Faculty X", "Faculty Y", "Faculty Z"],  // Sample faculty list for Course 2
         course3: ["Faculty P", "Faculty Q", "Faculty R"]  // Sample faculty list for Course 3
-        // Add more courses and their respective faculties here
+       
     };
 
     const questions = [
@@ -50,7 +50,7 @@
         "Rate the overall effectiveness of the faculty's teaching methods.",
         "How organized was the course structure?",
         "Would you recommend this faculty to other students?"
-        // Add more questions as needed
+        
     ];
 
     const feedbackForm = document.getElementById('feedbackForm');
@@ -73,13 +73,13 @@
         } else {
             facultySelect.disabled = true;
         }
-        questionsDiv.innerHTML = ''; // Reset questions when course changes
-        submitBtn.disabled = true; // Disable submit button when course changes
+        questionsDiv.innerHTML = ''; 
+        submitBtn.disabled = true; 
     });
 
     facultySelect.addEventListener('change', function() {
         const selectedFaculty = this.value;
-        questionsDiv.innerHTML = ''; // Reset questions when faculty changes
+        questionsDiv.innerHTML = ''; 
         if (selectedFaculty) {
             questions.forEach((question, index) => {
     const questionElem = document.createElement('div');
@@ -115,12 +115,11 @@
 
     feedbackForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        // Here you can handle form submission, like sending data to the server
-        // You can collect feedback using document.querySelectorAll('input[type="radio"]:checked')
+      
         alert('Feedback submitted successfully!');
-        // You might want to reset the form after submission
+        
         this.reset();
-        // Reset other form elements if needed
+        
     });
 </script>
 </body>
