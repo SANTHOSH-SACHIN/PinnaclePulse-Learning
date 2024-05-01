@@ -7,6 +7,22 @@
 <link rel="stylesheet" href="student_dashboard_style.css">
 </head>
 <body>
+    <nav>
+        <div class="nav__logo">
+            <a href="../files/index.html">PinnaclePulse</a>
+          </div>
+          <ul class="nav__links">
+            <li class="links"><a href="#">Home</a></li>
+            <li class="links"><a href="#">About Us</a></li>
+            <li class="links"><a href="#">Courses</a></li>
+            <li class="links"><a href="#">Teach at PinnaclePulse</a></li>
+            
+            <div class="dropdown">
+              <button id="logout-btn">Log Out</button>
+              
+            </div>
+          </ul>
+    </nav>
 <div class="container">
     <h1>Faculty Feedback Form</h1>
     <form id="feedbackForm">
@@ -41,7 +57,7 @@
         course1: ["Faculty A", "Faculty B", "Faculty C"], // Sample faculty list for Course 1
         course2: ["Faculty X", "Faculty Y", "Faculty Z"],  // Sample faculty list for Course 2
         course3: ["Faculty P", "Faculty Q", "Faculty R"]  // Sample faculty list for Course 3
-       
+        // Add more courses and their respective faculties here
     };
 
     const questions = [
@@ -50,7 +66,7 @@
         "Rate the overall effectiveness of the faculty's teaching methods.",
         "How organized was the course structure?",
         "Would you recommend this faculty to other students?"
-        
+        // Add more questions as needed
     ];
 
     const feedbackForm = document.getElementById('feedbackForm');
@@ -73,13 +89,13 @@
         } else {
             facultySelect.disabled = true;
         }
-        questionsDiv.innerHTML = ''; 
-        submitBtn.disabled = true; 
+        questionsDiv.innerHTML = ''; // Reset questions when course changes
+        submitBtn.disabled = true; // Disable submit button when course changes
     });
 
     facultySelect.addEventListener('change', function() {
         const selectedFaculty = this.value;
-        questionsDiv.innerHTML = ''; 
+        questionsDiv.innerHTML = ''; // Reset questions when faculty changes
         if (selectedFaculty) {
             questions.forEach((question, index) => {
     const questionElem = document.createElement('div');
@@ -115,11 +131,12 @@
 
     feedbackForm.addEventListener('submit', function(event) {
         event.preventDefault();
-      
+        // Here you can handle form submission, like sending data to the server
+        // You can collect feedback using document.querySelectorAll('input[type="radio"]:checked')
         alert('Feedback submitted successfully!');
-        
+        // You might want to reset the form after submission
         this.reset();
-        
+        // Reset other form elements if needed
     });
 </script>
 </body>
