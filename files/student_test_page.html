@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Test Page</title>
+    <link rel="stylesheet" href="student_dashboard_style.css">
+    <!-- Include any additional stylesheets or scripts -->
+</head>
+
+<body>
+    <nav>
+        <div class="nav__logo">
+            <a href="../files/index.html">PinnaclePulse</a>
+          </div>
+          <ul class="nav__links">
+            <li class="links"><a href="#">Home</a></li>
+            <li class="links"><a href="#">About Us</a></li>
+            <li class="links"><a href="#">Courses</a></li>
+            <li class="links"><a href="#">Teach at PinnaclePulse</a></li>
+            
+            <div class="dropdown">
+              <button id="logout-btn">Log Out</button>
+              
+            </div>
+          </ul>
+    </nav>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="../image-assets/profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Harsha</b> </p>
+                        <small class="text-muted">ID:<b>12102030</b></small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Courses</h5>
+                    <!-- <p> -->
+                        <ul>
+                            <li>Course 1</li>
+                            <li>Course 2</li>
+                            <li>Course 3</li>
+                            <li>Course 4</li>
+                            <li>Course 5</li>
+                        </ul>
+                    <!-- </p> -->
+                    <h5>DOB</h5>
+                    <p>29-Feb-2020</p>
+                    <h5>Contact</h5>
+                    <p>1234567890</p>
+                    <h5>Email</h5>
+                    <p>lucifer143sj@gmail.com</p>
+                    <h5>Location</h5>
+                    <p>Siddipet Intl, Sidharth, Hyderabad</p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Choose Subject</h1>
+            <div class="subject-list">
+                <div class="subject">
+                    <h3>Course 1</h3>
+                    <button class="start-quiz-btn" data-subject="course1">Start Quiz</button>
+                </div>
+                <div class="subject">
+                    <h3>Course 2</h3>
+                    <button class="start-quiz-btn" data-subject="course2">Start Quiz</button>
+                </div>
+                <!-- Add more subjects here -->
+            </div>
+        </main>
+
+        <div class="right">
+            <div class="announcements">
+                <h2>Notifications</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p> <b>Announcement/Alert 3 Title</b> Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Temporibus, voluptas?</p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Announcement/Alert 2 Title</b>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Recusandae, similique.</p>
+                        <small class="text-muted">10 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p> <b>Announcement/Alert 1 Title</b>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            Molestias, nostrum!</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying quiz questions -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="quiz-subject"></h2>
+            <form id="quiz-form">
+                <div class="question">
+                    <p>Question 1: What is the capital of France?</p>
+                    <label><input type="radio" name="q1" value="paris"> Paris</label>
+                    <label><input type="radio" name="q1" value="london"> London</label>
+                    <label><input type="radio" name="q1" value="berlin"> Berlin</label>
+                </div>
+                <div class="question">
+                    <p>Question 2: Who wrote "To Kill a Mockingbird"?</p>
+                    <label><input type="radio" name="q2" value="harper-lee"> Harper Lee</label>
+                    <label><input type="radio" name="q2" value="mark-twain"> Mark Twain</label>
+                    <label><input type="radio" name="q2" value="j-k-rowling"> J.K. Rowling</label>
+                </div>
+                <!-- Add more questions here -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code to handle quiz modal and subject selection
+
+document.addEventListener("DOMContentLoaded", function () {
+    const startQuizBtns = document.querySelectorAll(".start-quiz-btn");
+    const quizModal = document.getElementById("quiz-modal");
+    const closeModalBtn = quizModal.querySelector(".close");
+    const quizForm = document.getElementById("quiz-form");
+    const quizSubjectHeading = document.getElementById("quiz-subject");
+
+    startQuizBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            const subject = this.dataset.subject;
+            quizSubjectHeading.textContent = `Quiz for ${subject}`;
+            quizModal.style.display = "block";
+            // Fetch and display quiz questions for the selected subject (you need to implement this)
+        });
+    });
+
+    closeModalBtn.addEventListener("click", function () {
+        quizModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === quizModal) {
+            quizModal.style.display = "none";
+        }
+    });
+
+    quizForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        // Get the selected answers
+        const selectedAnswers = {};
+        const questions = document.querySelectorAll(".question");
+        questions.forEach(question => {
+            const questionNumber = question.dataset.question;
+            const selectedOption = question.querySelector("input:checked");
+            if (selectedOption) {
+                selectedAnswers[questionNumber] = selectedOption.value;
+            }
+        });
+
+        // Compare selected answers with correct answers (you can store correct answers in an object)
+        const correctAnswers = {
+            q1: "paris",
+            q2: "harper-lee"
+            // Add more correct answers here
+        };
+
+        let score = 0;
+        for (const questionNumber in selectedAnswers) {
+            if (selectedAnswers.hasOwnProperty(questionNumber)) {
+                if (selectedAnswers[questionNumber] === correctAnswers[questionNumber]) {
+                    score++;
+                }
+            }
+        }
+
+        // Display score to the user (you can use alert, console.log, or display it on the page)
+        alert(`Your score is ${score}/${Object.keys(correctAnswers).length}`);
+
+        // After handling the submission, you can close the modal
+        quizModal.style.display = "none";
+    });
+});
+
+    </script>
+</body>
+
+</html>
