@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Test Creation</title>
+    <link rel="stylesheet" href="student_dashboard_style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav__logo">
+            <a href="#">PinnaclePulse</a>
+        </div>
+        <ul class="nav__links">
+            <li class="links"><a href="#">Home</a></li>
+            <li class="links"><a href="#">About Us</a></li>
+            <li class="links"><a href="#">Courses</a></li>
+            <li class="links"><a href="#">Teach at PinnaclePulse</a></li>
+            <div class="dropdown">
+                <button id="logout-btn">Log Out</button>
+            </div>
+        </ul>
+    </nav>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="../image-assets/profile-faculty.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Faculty Name</b></p>
+                        <small class="text-muted">ID:<b>12345</b></small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Subjects Teaching</h5>
+                    <ul>
+                        <li>Subject 1</li>
+                        <li>Subject 2</li>
+                        <li>Subject 3</li>
+                        <!-- Add more subjects here -->
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Create Test</h1>
+            <br>
+            <form id="test-form" onsubmit="return validateForm()">
+                <div class="input-field">
+                    <label for="subject">Select Subject:</label>
+                    <select id="subject" name="subject">
+                        <option value="">Select</option>
+                        <option value="subject1">Subject 1</option>
+                        <option value="subject2">Subject 2</option>
+                        <option value="subject3">Subject 3</option>
+                        <!-- Add more subjects here -->
+                    </select>
+                    <small id="subject-error" class="error-message"></small>
+                </div>
+                <br>
+                <div class="input-field">
+                    <label for="time-limit">Set Time Limit (minutes):</label>
+                    <input type="number" id="time-limit" name="time-limit" min="1" max="120">
+                    <small id="time-limit-error" class="error-message"></small>
+                </div>
+                <br>
+                <div class="question">
+                    <label for="question1">Question 1:</label>
+                    <input type="text" id="question1" name="question1">
+                    <label for="answer1">Answer:</label>
+                    <input type="text" id="answer1" name="answer1">
+                    <small id="question1-error" class="error-message"></small>
+                    <small id="answer1-error" class="error-message"></small>
+                </div>
+                <br>
+                <div class="question">
+                    <label for="question2">Question 2:</label>
+                    <input type="text" id="question2" name="question2">
+                    <label for="answer2">Answer:</label>
+                    <input type="text" id="answer2" name="answer2">
+                    <small id="question2-error" class="error-message"></small>
+                    <small id="answer2-error" class="error-message"></small>
+                </div>
+                <br>
+                <div class="question">
+                    <label for="question3">Question 3:</label>
+                    <input type="text" id="question2" name="question3">
+                    <label for="answer3">Answer:</label>
+                    <input type="text" id="answer3" name="answer3">
+                    <small id="question3-error" class="error-message"></small>
+                    <small id="answer3-error" class="error-message"></small>
+                </div>
+                <!-- Add more questions here -->
+                <br>
+                <br>
+
+                <button type="submit">Create Test</button>
+            </form>
+        </main>
+
+        <div class="right">
+            <!-- Additional content for faculty if needed -->
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var subject = document.getElementById("subject").value;
+            var timeLimit = document.getElementById("time-limit").value;
+            var question1 = document.getElementById("question1").value;
+            var answer1 = document.getElementById("answer1").value;
+            var question2 = document.getElementById("question2").value;
+            var answer2 = document.getElementById("answer2").value;
+
+            var valid = true;
+
+            if (subject === "") {
+                document.getElementById("subject-error").textContent = "Please select a subject.";
+                valid = false;
+            } else {
+                document.getElementById("subject-error").textContent = "";
+            }
+
+            if (timeLimit === "") {
+                document.getElementById("time-limit-error").textContent = "Please set a time limit.";
+                valid = false;
+            } else {
+                document.getElementById("time-limit-error").textContent = "";
+            }
+
+            if (question1 === "") {
+                document.getElementById("question1-error").textContent = "Please enter a question.";
+                valid = false;
+            } else {
+                document.getElementById("question1-error").textContent = "";
+            }
+
+            if (answer1 === "") {
+                document.getElementById("answer1-error").textContent = "Please enter an answer.";
+                valid = false;
+            } else {
+                document.getElementById("answer1-error").textContent = "";
+            }
+
+            if (question2 === "") {
+                document.getElementById("question2-error").textContent = "Please enter a question.";
+                valid = false;
+            } else {
+                document.getElementById("question2-error").textContent = "";
+            }
+
+            if (answer2 === "") {
+                document.getElementById("answer2-error").textContent = "Please enter an answer.";
+                valid = false;
+            } else {
+                document.getElementById("answer2-error").textContent = "";
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+
+</html>
